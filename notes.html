@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notes</title>
+</head>
+<body>
+    <div id="canvas"></div>
+    <div style="background-color: black; height: 5;">_ </div>
+    <div id="palette"></div>
+    <script>
+        
+        let canvas = document.getElementById("canvas");
+        let palette = document.getElementById("palette");
+        
+        AddPrototype("img/do.png");
+        AddPrototype("img/dos.png");
+        AddPrototype("img/re.png");
+        AddPrototype("img/res.png");
+        AddPrototype("img/mi.png");
+        AddPrototype("img/fa.png");
+        AddPrototype("img/fas.png");
+        AddPrototype("img/sol.png");
+        AddPrototype("img/sols.png");
+        AddPrototype("img/la.png");
+        AddPrototype("img/si.png");
+        AddPrototype("img/do2.png");
+        AddPrototype("img/dos2.png");
+        AddPrototype("img/re2.png");
+        AddPrototype("img/res2.png");
+        AddPrototype("img/mi2.png");
+        AddPrototype("img/fa2.png");
+        AddPrototype("img/fas2.png");
+        AddPrototype("img/sol2.png");
+        AddPrototype("img/sols2.png");
+        AddPrototype("img/la2.png");      
+
+        let key = create("img/key.png");
+        placeNote(key);  
+        
+        
+        function create(src) {
+            let result = document.createElement("img");
+            result.src = src;
+            return result;
+        }
+
+        function placeNote(note) {
+            let newNote = note.cloneNode();
+            newNote.addEventListener("click", (e) => {
+            deleteNote(newNote);
+        });
+            canvas.append(newNote);
+        }
+
+        function deleteNote(note) {
+            note.remove();
+        }
+
+        function AddPrototype(path) {
+        let note = create(path);
+        note.addEventListener("click", (e) => {
+            placeNote(note);
+        });
+        palette.appendChild(note);
+        }
+    </script>
+
+</body>
+</html>
